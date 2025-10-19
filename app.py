@@ -31,7 +31,9 @@ def create_product():
         name=data["name"],
         description=data.get("description", ""),
         price=data["price"],
-        baked_date=date.fromisoformat(data["baked_date"])
+        baked_date=date.fromisoformat(data["baked_date"]),
+        ingredients=data.get("ingredients", ""),
+        is_gluten_free=data.get("is_gluten_free", False)
     )
     db.session.add(product)
     db.session.commit()
@@ -48,6 +50,8 @@ def update_product(id):
     product.price = data.get("price", product.price)
     if "baked_date" in data:
         product.baked_date = date.fromisoformat(data["baked_date"])
+    product.ingredients = data.get("ingredients", product.ingredients)
+    product.is_gluten_free = data.get("is_gluten_free", product.is_gluten_free)
     db.session.commit()
     return jsonify(product.to_dict())
 

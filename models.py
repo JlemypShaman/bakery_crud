@@ -9,6 +9,10 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False)
     baked_date = db.Column(db.Date, nullable=False)
 
+    #new
+    ingredients = db.Column(db.String(300), nullable=True)
+    is_gluten_free = db.Column(db.Boolean, default=False)
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -16,4 +20,6 @@ class Product(db.Model):
             "description": self.description,
             "price": self.price,
             "baked_date": self.baked_date.isoformat(),
+            "ingredients": self.ingredients,
+            "is_gluten_free": self.is_gluten_free,
         }

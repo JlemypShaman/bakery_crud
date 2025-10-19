@@ -12,11 +12,25 @@
     <input class="form-control mb-2" id="description" placeholder="Opis">
     <input class="form-control mb-2" id="price" type="number" placeholder="Cena" required>
     <input class="form-control mb-2" id="baked_date" type="date" required>
+    <input class="form-control mb-2" id="ingredients" placeholder="Składniki (oddzielone przecinkami)">
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" id="is_gluten_free">
+      <label class="form-check-label" for="is_gluten_free">Bezglutenowy</label>
+    </div>
     <button class="btn btn-success">Dodaj produkt</button>
   </form>
   <table class="table table-striped">
     <thead>
-      <tr><th>ID</th><th>Nazwa</th><th>Cena</th><th>Data</th><th>Akcje</th></tr>
+      <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>Cena</th>
+        <th>Data</th>
+        <th>Składniki</th>
+        <th>Bezglutenowy</th>
+        <th>Akcje</th>
+      </tr>
     </thead>
     <tbody id="productTable"></tbody>
   </table>

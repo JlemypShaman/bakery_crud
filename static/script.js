@@ -8,8 +8,11 @@ async function loadProducts() {
     <tr>
       <td>${p.id}</td>
       <td>${p.name}</td>
+      <td>${p.description || ""}</td>
       <td>${p.price.toFixed(2)} zł</td>
       <td>${p.baked_date}</td>
+      <td>${p.ingredients || ""}</td>
+      <td>${p.is_gluten_free ? "Tak" : "Nie"}</td>
       <td><button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.id})">Usuń</button></td>
     </tr>
   `).join("");
@@ -21,7 +24,9 @@ form.addEventListener("submit", async (e) => {
     name: form.name.value,
     description: form.description.value,
     price: parseFloat(form.price.value),
-    baked_date: form.baked_date.value
+    baked_date: form.baked_date.value,
+    ingredients: form.ingredients.value,
+    is_gluten_free: form.is_gluten_free.checked
   };
   await fetch("/products", {
     method: "POST",
